@@ -1,0 +1,44 @@
+class Persona:
+    def __init__(self, nombre, apellido, direccion, telefono, edad, gmail):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.direccion = direccion
+        self.telefono = telefono
+        self.edad = edad
+        self.gmail = gmail
+
+    def imprimir_datos(self):
+        print(f"Nombre: {self.nombre}, Apellido: {self.apellido}, Dirección: {self.direccion}, Teléfono: {self.telefono}, Edad: {self.edad}, Gmail: {self.gmail}") 
+
+class Empleado(Persona):
+    def __init__(self, nombre, apellido, direccion, telefono, edad, gmail,
+                salario, jefe_inmediato, años_experiencia):
+        super().__init__(nombre, apellido, direccion, telefono, edad, gmail)
+        self.salario = salario
+        self.jefe_inmediato = jefe_inmediato
+        self.años_experiencia = años_experiencia
+        
+        
+        if (self.salario >= 5000000 and self.años_experiencia >= 5 and 25 <= self.edad <= 45):
+            self.nombre_cargo = "Senior"
+            
+        elif (900000 <= self.salario <= 1200000 and 1 <= self.años_experiencia <= 2 and 18 <= self.edad <= 22):
+            self.nombre_cargo = "Junior"
+
+    def imprimir_datos(self):
+        super().imprimir_datos()
+        print(f"Salario: {self.salario}, Jefe Inmediato: {self.jefe_inmediato},Años de Experiencia: {self.años_experiencia}, Cargo: {self.nombre_cargo}")
+
+nombre = input("Nombre: ")
+apellido = input("Apellido: ")
+direccion = input("Dirección: ")
+telefono = input("Teléfono: ")
+edad = int(input("Edad: "))
+gmail = input("Gmail: ")
+salario = float(input("Salario: "))
+jefe_inmediato = input("Jefe Inmediato: ")
+años_experiencia = int(input("Años de Experiencia: "))
+
+E = Empleado(nombre, apellido, direccion, telefono, edad, gmail, salario, jefe_inmediato, años_experiencia)
+
+E.imprimir_datos()
